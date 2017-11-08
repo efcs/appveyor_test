@@ -37,9 +37,10 @@ double ProcessCPUUsage() {
 
 
 template<typename T>
-void PrintBinRep(const char* Name, const volatile T& tmp)
+void PrintBinRep(const char* Name, const T& tmp)
 {
-    const T& a = const_cast<const T&>(tmp);
+    using RawT = typename std::remove_volatile<T>::type;
+    const RawT& a = const_cast<const RawT&>(tmp);
     const unsigned char* beg = reinterpret_cast<const unsigned char*>(&a);
     const unsigned char* end = beg + sizeof(a);
     std::cout << Name << ": ";
