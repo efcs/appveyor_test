@@ -59,9 +59,9 @@ int main() {
 	printf("otherd: %f, d: %f, other: %f\n", otherd, d, other);
 	assert(other >= 0);
 	#endif
-  double d1 = ProcessCPUUsage();
-  double d2 = ProcessCPUUsage();
-  double d3 = (d2 - d1);
+  volatile double d1 = ProcessCPUUsage();
+  volatile double d2 = ProcessCPUUsage();
+  volatile double d3 = (d2 - d1);
   PrintBinRep("d1", d1);
   PrintBinRep("d2", d2);
   PrintBinRep("d3", d3);
