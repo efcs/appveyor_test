@@ -1,13 +1,17 @@
 #include <iostream>
 #include <cstdlib>
 #include <bitset>
+#include <thread>
+#include <chrono>
+
+#include <Shlwapi.h>
+#include <VersionHelpers.h>
+#include <Windows.h>
+
 #ifdef NDEBUG
 #undef NDEBUG
 #endif
 #include <cassert>
-#include <Shlwapi.h>
-#include <VersionHelpers.h>
-#include <Windows.h>
 
 double MakeTime(FILETIME const& kernel_time, FILETIME const& user_time) {
   ULARGE_INTEGER kernel;
@@ -73,5 +77,6 @@ int main() {
     assert(!(d1 < 0));
     assert(!(d2 < 0));
     assert(!(d3 < 0));
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
   }
 }
