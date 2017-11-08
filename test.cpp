@@ -16,6 +16,8 @@ double MakeTime(FILETIME const& kernel_time, FILETIME const& user_time) {
   kernel.LowPart = kernel_time.dwLowDateTime;
   user.HighPart = user_time.dwHighDateTime;
   user.LowPart = user_time.dwLowDateTime;
+  std::cout << "Kernel: " << kernel.QuadPart << std::endl;
+  std::cout << "User: " << user.QuadPart << std::endl;
   return (static_cast<double>(kernel.QuadPart) +
           static_cast<double>(user.QuadPart)) *
          1e-7;
