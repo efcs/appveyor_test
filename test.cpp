@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <bitset>
 #ifdef NDEBUG
 #undef NDEBUG
 #endif
@@ -32,6 +33,22 @@ double ProcessCPUUsage() {
   std::abort();
 }
 
+
+template<typename T>
+void PrintBinRep(const char* Name, const T& a)
+{
+    const unsigned char* beg = reinterpret_cast<const unsigned char*>(&a);
+    const unsigned char* end = beg + sizeof(a);
+    std::cout << Name << ": ";
+    while (end != beg)
+      std::cout << std::bitset<8>(*(--end)) << ' ';
+
+    //while(beg != end)
+    //    std::cout << std::bitset<CHAR_BIT>(*beg++) << ' ';
+    std::cout << std::endl;
+}
+
+
 int main() {
 	#if 0
 	unsigned long long value1 = 1;
@@ -45,6 +62,10 @@ int main() {
   double d1 = ProcessCPUUsage();
   double d2 = ProcessCPUUsage();
   double d3 = (d2 - d1);
-  printf("d1: %f, d2: %f, d3: %f\n", d1, d3, d3);
+  PrintBinRep("d1", d1);
+  PrintBinRep("d2", d2);
+  PrintBinRep("d3", d3);
+  assert(!(d1 < 0));
+  assert(!(d2 < 0));
   assert(!(d3 < 0));
 }
