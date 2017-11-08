@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #ifdef NDEBUG
 #undef NDEBUG
 #endif
@@ -28,6 +29,8 @@ double ProcessCPUUsage() {
   if (GetProcessTimes(proc, &creation_time, &exit_time, &kernel_time,
                       &user_time))
     return MakeTime(kernel_time, user_time);
+  std::abort();
+}
 
 int main() {
 	#if 0
