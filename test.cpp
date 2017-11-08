@@ -77,6 +77,6 @@ int main() {
     assert(!(d1 < 0));
     assert(!(d2 < 0));
     assert(!(d3 < 0));
-    std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
 }
