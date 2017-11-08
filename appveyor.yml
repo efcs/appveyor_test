@@ -3,8 +3,8 @@ version: '{build}'
 image: Visual Studio 2017
 
 configuration:
-  - Debug
-  - Release
+  - DEBUG
+  - RELEASE
 
 environment:
   matrix:

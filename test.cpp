@@ -42,8 +42,8 @@ int main() {
 	printf("otherd: %f, d: %f, other: %f\n", otherd, d, other);
 	assert(other >= 0);
 	#endif
-  double d1 = ProcessCPUTime();
-  double d2 = ProcessCPUTime();
+  double d1 = ProcessCPUUsage();
+  double d2 = ProcessCPUUsage();
   double d3 = (d2 - d1);
   assert(d3 > 0);
   printf("d1: %f, d2: %f, d3: %f\n", d1, d3, d3);
